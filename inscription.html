@@ -67,19 +67,20 @@
   </footer>
 
   <script>
-    document.getElementById("formInscription").addEventListener("submit", async function (e) {
-      e.preventDefault();
+  document.getElementById("formInscription").addEventListener("submit", async function (e) {
+    e.preventDefault();
 
-      const data = {
-        prenom: document.getElementById("prenom").value,
-        nom: document.getElementById("nom").value,
-        naissance: document.getElementById("naissance").value,
-        email: document.getElementById("email").value,
-        mot_de_passe: document.getElementById("motdepasse").value,
-        niveau: document.getElementById("niveau").value,
-        objectif: document.getElementById("objectif").value
+    const data = {
+      prenom: document.getElementById("prenom").value,
+      nom: document.getElementById("nom").value,
+      naissance: document.getElementById("naissance").value,
+      email: document.getElementById("email").value,
+      mot_de_passe: document.getElementById("motdepasse").value,
+      niveau: document.getElementById("niveau").value,
+      objectif: document.getElementById("objectif").value
 };
 
+    try {
       const res = await fetch("https://9a7b95cf-ab29-4cdb-8015-f36d0b593d2b-00-2iuizvvj1u0tv.worf.replit.dev/inscription", {
         method: "POST",
         headers: { "Content-Type": "application/json"},
@@ -87,12 +88,17 @@
 });
 
       const result = await res.json();
-      document.getElementById("message").textContent = result.message;
+      document.getElementById("message").textContent = result.message || "✅ Inscription envoyée!";
 
       if (res.ok) {
         setTimeout(() => window.location.href = "cours.html", 2000);
 }
+} catch (error) {
+      document.getElementById("message").textContent = "❌ Erreur réseau ou serveur inaccessible.";
+      console.error("Erreur d’inscription:", error);
+}
 });
-  </script>
+</script>
+
 </body>
 </html>
