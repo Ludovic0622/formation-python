@@ -1,9 +1,10 @@
-/* Structure de base */
+/* 🌐 Structure de base */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: "Segoe UI", sans-serif;
   background-color: #f7f7f7;
@@ -11,11 +12,12 @@ body {
   line-height: 1.7;
 }
 
-/* Barre de navigation */
+/* 📌 Barre de navigation */
 #nav {
   background-color: #000;
   color: gold;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding: 15px 40px;
@@ -23,45 +25,90 @@ body {
   border-bottom-right-radius: 40px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
+
 #logo {
   font-size: 1.8rem;
   font-weight: bold;
 }
+
 #menu {
   display: flex;
+  flex-wrap: wrap;
   list-style: none;
   gap: 25px;
 }
+
 #menu li a {
   color: gold;
   font-weight: bold;
   text-decoration: none;
 }
+
 #menu li a:hover {
   color: white;
 }
 
-/* Contenu principal */
+/* 📱 Responsive mobile */
+@media screen and (max-width: 600px) {
+  #nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px 20px;
+}
+
+  #menu {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+  #logo {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+  #menu a {
+    font-size: 1em;
+}
+
+.main-content {
+    padding: 20px;
+    margin: 30px auto;
+}
+
+  h1, h2 {
+    font-size: 1.3em;
+}
+
+.cta {
+    padding: 10px 16px;
+    font-size: 0.95em;
+}
+}
+
+/* 📦 Contenu principal */
 .main-content {
   max-width: 1000px;
   margin: 50px auto;
   padding: 30px;
 }
 
-/* Sections */
+/* 📚 Sections */
 section {
   margin-bottom: 50px;
 }
+
 h1, h2 {
   margin-bottom: 15px;
   color: #111;
 }
+
 p, li {
   margin-bottom: 12px;
   font-size: 1.1em;
 }
 
-/* Bouton CTA */
+/* 🚀 Bouton CTA */
 .cta {
   display: inline-block;
   background-color: gold;
@@ -72,16 +119,18 @@ p, li {
   border-radius: 6px;
   margin-top: 15px;
 }
+
 .cta:hover {
   background-color: #ffdc64;
 }
 
-/* Témoignages */
+/* 💬 Témoignages */
 .testimonials {
   background-color: #fafafa;
   padding: 40px 30px;
   border-radius: 8px;
 }
+
 .testimonials h2 {
   font-size: 1.6em;
   color: #1f2937;
@@ -89,11 +138,13 @@ p, li {
   border-left: 5px solid gold;
   padding-left: 10px;
 }
+
 .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
 }
+
 .testimonials-grid blockquote {
   background-color: white;
   padding: 20px;
@@ -103,6 +154,7 @@ p, li {
   font-style: italic;
   position: relative;
 }
+
 .testimonials-grid cite {
   display: block;
   margin-top: 10px;
@@ -112,7 +164,7 @@ p, li {
   text-align: right;
 }
 
-/* Footer */
+/* 🧱 Footer */
 footer {
   background-color: #000;
   color: gold;
@@ -120,4 +172,3 @@ footer {
   padding: 20px;
   font-size: 0.9em;
 }
-
