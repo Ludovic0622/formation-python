@@ -53,7 +53,7 @@
       </select>
 
       <label for="objectif">Pourquoi apprends-tu Python?</label>
-      <input type="text" id="objectif" placeholder="Ex: Reconvertir, trouver un travail, curiosité..." required />
+      <input type="text" id="objectif" placeholder="Ex: Reconvertir, trouver un travail..." required />
 
       <label>
         <input type="checkbox" id="cgu" required />
@@ -84,14 +84,14 @@
 };
 
       try {
-        const res = await fetch("https://9a7b95cf-ab29-4cdb-8015-f36d0b593d2b-00-2iuizvvj1u0tv.worf.replit.dev/api/register", {
+        const res = await fetch("https://workspace.attypozanadludo.repl.co/register", {
           method: "POST",
           headers: { "Content-Type": "application/json"},
           body: JSON.stringify(data)
 });
 
         const result = await res.json();
-        document.getElementById("message").textContent = result.message || "✅ Inscription réussie!";
+        document.getElementById("message").textContent = result.message || "✅ Inscription envoyée!";
         if (res.ok) {
           setTimeout(() => window.location.href = "cours.html", 2000);
 }
