@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Exercices Python – NICO SERVICES</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🐍 NICO SERVICES</h1>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="cours.html">Cours</a>
+      <a href="exercices.html">Exercices</a>
+      <a href="projets.html">Projets Premium</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>💡 Exercices Python – Teste tes connaissances</h2>
+
+    <h3>Q1: Quel mot affiche du texte?</h3>
+    <form>
+      <input type="radio" name="q1"> echo<br>
+      <input type="radio" name="q1"> display<br>
+      <input type="radio" name="q1" id="correct"> print<br>
+      <button type="button" onclick="verif()">Valider</button>
+    </form>
+
+    <h3>Défi mental</h3>
+    <pre>
+nom = "Ludovic"
+print("Bonjour", nom)
+    </pre>
+    <p>💬 Résultat attendu: <strong>Bonjour Ludovic</strong></p>
+
+    <a class="cta" href="projets.html">🛠 Accéder aux projets premium</a>
+  </main>
+
+  <footer>
+    <p>© 2025 Ludovic Zanad – NICO SERVICES</p>
+  </footer>
+
+  <script>
+    function verif() {
+      const rep = document.getElementById("correct");
+      alert(rep.checked? "✅ Bonne réponse!": "❌ Essaie encore.");
+}
+  </script>
+</body>
+</html>

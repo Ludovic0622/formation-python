@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cours 2 – Variables & Types</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: "Segoe UI", sans-serif; background: #f9fafb;}
+.content {
+      max-width: 800px; margin: auto; padding: 30px;
+      background: white; border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+    h1 { text-align: center; margin-bottom: 20px;}
+    pre {
+      background: #f3f4f6; padding: 15px;
+      border-radius: 8px; overflow-x: auto;
+}
+.btn {
+      background: #2563eb; color: white;
+      border: none; padding: 12px 24px;
+      border-radius: 6px; font-weight: bold;
+      margin-top: 20px; cursor: pointer;
+}
+.btn:hover { background: #1e40af;}
+    #msgCours { margin-top: 15px; font-style: italic; color: #2563eb;}
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<div id="nav">
+  <div id="logo">🐍 NICO SERVICES</div>
+  <ul id="menu">
+    <li><a href="index.html">Accueil</a></li>
+      <li><a href="cours.html">Cours</a></li>
+      <li><a href="projets.html">Projets</a></li>
+      <li><a href="premium.html" class="btn">💎 Modules Premium</a></li>
+  </ul>
+</div>
+
+<!-- Contenu -->
+<div class="main-content">
+  <div class="content">
+    <h1>📦 Cours 2: Variables & Types</h1>
+
+    <h2>🎯 Objectif</h2>
+    <p>Savoir stocker des données dans des variables, et comprendre les principaux types de données en Python.</p>
+
+    <h2>📘 Explication</h2>
+    <p>Une variable permet de conserver une information temporairement.</p>
+    <ul>
+      <li><code>int</code>: entier (ex. 42)</li>
+      <li><code>float</code>: nombre décimal (ex. 3.14)</li>
+      <li><code>str</code>: texte (ex. "Hello")</li>
+      <li><code>bool</code>: vrai ou faux (<code>True</code> ou <code>False</code>)</li>
+    </ul>
+
+    <h2>✍ Exemple de code</h2>
+    <pre><code># Déclaration de variables
+prenom = "Lina"
+age = 25
+moyenne = 14.5
+est_inscrite = True
+
+# Affichage
+print("👩 Prénom:", prenom)
+print("🎂 Âge:", age)
+print("📊 Moyenne:", moyenne)
+print("✅ Inscrite:", est_inscrite)</code></pre>
+
+    <a href="https://replit.com" target="_blank" class="btn">👨‍💻 Tester sur Replit</a>
+    <br><br>
+    <button class="btn" onclick="validerCours()">✅ J’ai terminé ce cours</button>
+    <p id="msgCours"></p>
+  </div>
+</div>
+
+<footer>
+  <p style="text-align: center;">© 2025 Ludovic Zanad – Boutique NICO SERVICES</p>
+</footer>
+
+<script>
+  const progression = parseInt(localStorage.getItem("coursDebloque") || "0");
+  if (progression < 1) {
+    alert("🚫 Tu dois d’abord terminer le cours 1.");
+    window.location.href = "cours1.html";
+}
+
+  const coursID = 2;
+  function validerCours() {
+    if (progression < coursID) {
+      localStorage.setItem("coursDebloque", coursID.toString());
+      document.getElementById("msgCours").textContent = "✅ Cours 2 validé! Tu peux continuer.";
+} else {
+      document.getElementById("msgCours").textContent = "☑ Ce cours est déjà terminé.";
+}
+}
+</script>
+
+</body>
+</html>

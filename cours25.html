@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cours 25 – Badge Python</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: "Segoe UI", sans-serif; background: #f0fdf4; margin: 0; padding: 0;}
+.content {
+      max-width: 800px; margin: auto; padding: 30px;
+      background: white; border-radius: 16px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.07);
+      text-align: center;
+}
+    h1 { font-size: 2em; margin-bottom: 20px; color: #065f46;}
+.badge {
+      font-size: 5em; margin-bottom: 20px;
+}
+    p { font-size: 1.1em; margin-bottom: 25px;}
+.btn {
+      background: #10b981; color: white;
+      border: none; padding: 14px 28px;
+      border-radius: 8px; font-weight: bold;
+      font-size: 1em; cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.btn:hover { background: #059669;}
+    #msgCours { margin-top: 15px; font-style: italic; color: #10b981;}
+  </style>
+</head>
+<body>
+
+<div id="nav">
+  <div id="logo">🎓 NICO SERVICES</div>
+  <ul id="menu">
+    <li><a href="index.html">Accueil</a></li>
+      <li><a href="cours.html">Cours</a></li>
+      <li><a href="projets.html">Projets</a></li>
+      <li><a href="premium.html" class="btn">💎 Modules Premium</a></li>
+  </ul>
+</div>
+
+<div class="main-content">
+  <div class="content">
+    <div class="badge">🏅</div>
+    <h1>Tu as terminé la formation Python</h1>
+    <p>Bravo pour ton implication, ton parcours et ta curiosité. Tu as validé les 25 étapes et maîtrises désormais les bases du langage Python. Ce badge symbolise ton progression, ta régularité et ton envie d’apprendre.</p>
+    <p>Continue à coder, à explorer, et pourquoi pas à enseigner ? Le monde du développement est vaste et passionnant.</p>
+
+    <button class="btn" onclick="validerCours()">✅ Terminer et débloquer mon badge</button>
+    <p id="msgCours"></p>
+  </div>
+</div>
+
+<footer>
+  <p style="text-align:center;">© 2025 Ludovic Zanad – Formation NICO SERVICES</p>
+</footer>
+
+<script>
+  const progression = parseInt(localStorage.getItem("coursDebloque") || "0");
+  if (progression < 24) {
+    alert("🚫 Tu dois d’abord terminer les révisions.");
+    window.location.href = "cours24.html";
+}
+
+  const coursID = 25;
+  function validerCours() {
+    if (progression < coursID) {
+      localStorage.setItem("coursDebloque", coursID.toString());
+      document.getElementById("msgCours").textContent = "🎉 Formation terminée! Ton badge est débloqué 🏅";
+} else {
+      document.getElementById("msgCours").textContent = "☑ Tu as déjà terminé la formation.";
+}
+}
+</script>
+
+</body>
+</html>

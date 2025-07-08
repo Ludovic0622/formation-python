@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Profil utilisateur – NICO SERVICES</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #f9fafb;
+      padding: 0;
+      margin: 0;
+}
+.main-content {
+      padding: 30px;
+      max-width: 800px;
+      margin: auto;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+}
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+}
+    li {
+      padding: 8px 0;
+      border-bottom: 1px solid #e5e7eb;
+}
+.badge {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #10b981;
+      color: white;
+      text-align: center;
+      border-radius: 10px;
+      font-weight: bold;
+}
+.reset-btn {
+      margin-top: 30px;
+      background-color: #ef4444;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+}
+.reset-btn:hover {
+      background-color: #dc2626;
+}
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <div id="nav">
+    <div id="logo">🐍 NICO SERVICES</div>
+    <ul id="menu">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="cours.html">Cours</a></li>
+      <li><a href="projets.html">Projets</a></li>
+      <li><a href="premium.html" class="btn">💎 Modules Premium</a></li>
+
+    </ul>
+  </div>
+
+  <!-- Contenu principal -->
+  <div class="main-content">
+    <h1>👋 Bienvenue <span id="nomUtilisateur">...</span></h1>
+
+    <h2>📧 Ton Email</h2>
+    <p id="emailUtilisateur"></p>
+
+    <h2>📊 Projets réalisés</h2>
+    <ul id="listeProjets"></ul>
+
+    <div id="badgeProjets" class="badge" style="display: none;"></div>
+
+    <button class="reset-btn" onclick="reinitialiserProgression()">🔁 Réinitialiser ma progression</button>
+  </div>
+
+  <footer>
+    <p style="text-align: center;">© 2025 Ludovic Zanad – Boutique NICO SERVICES</p>
+  </footer>
+
+  <script>
+    // Récupération des données utilisateur
+    const prenom = localStorage.getItem("prenomUtilisateur") || "Invité";
+    const nom = localStorage.getItem("nomUtilisateur") || "";
+    const email = localStorage.getItem("emailUtilisateur") || "Non défini";
+
+    document.getElementById("nomUtilisateur").textContent = prenom + " " + nom;
+    document.getElementById("emailUtilisateur").textContent = email;
+
+    // Liste des projets disponibles
+    const projets = [
+      "🎲 Devine le nombre",
+      "🔢 Calculatrice interactive",
+      "📁 Renommage automatique",
+      "📊 Analyse CSV",
+      "🕹 Pierre-papier-ciseaux"
+    ];
+
+    const projetsValides = JSON.parse(localStorage.getItem("projetsValides")) || [];
+    const listeHTML = projets.map((nom, index) => {
+      const estTermine = projetsValides.includes(index + 1);
+      return <li>${nom} ${estTermine? "✅": "❌"}</li>;
+}).join("");
+
+    document.getElementById("listeProjets").innerHTML = listeHTML;
+
+    // Badge spécial si tous les projets sont faits
+    if (projetsValides.length>= projets.length) {
+      document.getElementById("badgeProjets").textContent = "🏅 Maître des Projets Python";
+      document.getElementById("badgeProjets").style.display = "block";
+}
+
+    // Réinitialisation
+    function reinitialiserProgression() {
+      if (confirm("❗ Cela effacera ta progression. Tu es sûr?")) {
+        localStorage.removeItem("coursDebloque");
+        localStorage.removeItem("projetsValides");
+        alert("🔄 Progression réinitialisée.");
+        window.location.reload();
+        }
+}
+  </script>
+</body>
+</html>

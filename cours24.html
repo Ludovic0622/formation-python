@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cours 24 – Révisions Python</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: "Segoe UI", sans-serif; background-color: #f9fafb;}
+.content {
+      max-width: 840px; margin: auto; padding: 30px;
+      background: white; border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+    h1 { text-align: center; margin-bottom: 25px;}
+    ul { line-height: 1.7;}
+.btn {
+      background: #2563eb; color: white;
+      border: none; padding: 12px 24px;
+      border-radius: 6px; font-weight: bold;
+      margin-top: 30px; cursor: pointer;
+}
+.btn:hover { background: #1e40af;}
+    #msgCours { margin-top: 15px; font-style: italic; color: #2563eb;}
+    pre {
+      background: #f3f4f6; padding: 15px;
+      border-radius: 6px; overflow-x: auto;
+}
+  </style>
+</head>
+<body>
+
+<div id="nav">
+  <div id="logo">📘 NICO SERVICES</div>
+  <ul id="menu">
+    <li><a href="index.html">Accueil</a></li>
+      <li><a href="cours.html">Cours</a></li>
+      <li><a href="projets.html">Projets</a></li>
+      <li><a href="premium.html" class="btn">💎 Modules Premium</a></li>
+  </ul>
+</div>
+
+<div class="main-content">
+  <div class="content">
+    <h1>📚 Révision générale de la formation Python</h1>
+
+    <h2>🧠 À bien retenir</h2>
+    <ul>
+      <li><strong>Variables:</strong> stockent des données (nombre, texte, etc.)</li>
+      <li><strong>Types:</strong> <code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code>, <code>list</code>, <code>dict</code></li>
+      <li><strong>Conditions:</strong> <code>if</code>, <code>elif</code>, <code>else</code> pour tester des cas</li>
+      <li><strong>Boucles:</strong> <code>for</code>, <code>while</code>, et boucles imbriquées</li>
+      <li><strong>Fonctions:</strong> créer avec <code>def</code>, renvoient des résultats avec <code>return</code></li>
+      <li><strong>Entrées/sorties:</strong> <code>input()</code>, <code>print()</code>, manipulation de fichiers</li>
+      <li><strong>Listes & dictionnaires:</strong> structures de données souples</li>
+      <li><strong>Exceptions:</strong> <code>try / except</code> pour gérer les erreurs</li>
+      <li><strong>POO:</strong> classes, objets, méthodes, héritage</li>
+      <li><strong>Modules:</strong> <code>import</code>, bibliothèques utiles (random, math, turtle…)</li>
+    </ul>
+
+    <h2>✨ Syntaxes fréquentes</h2>
+    <pre><code># Déclaration de fonction
+def carre(x):
+    return x * x
+
+# Boucle for
+for i in range(5):
+    print("🔁", i)
+
+# Condition
+if age>= 18:
+    print("Majeur")
+else:
+    print("Mineur")</code></pre>
+
+    <h2>🔗 Conseils pour aller plus loin</h2>
+    <ul>
+      <li>Lire la documentation officielle: <a href="https://docs.python.org/fr/3/" target="_blank">docs.python.org/fr</a></li>
+      <li>Pratiquer sur <a href="https://replit.com" target="_blank">Replit</a>, <a href="https://leetcode.com" target="_blank">LeetCode</a>, ou <a href="https://exercism.org" target="_blank">Exercism</a></li>
+      <li>Commencer un petit projet personnel (quiz, bot, jeu, application simple)</li>
+      <li>Participer à des communautés (Reddit, Discord, Stack Overflow)</li>
+    </ul>
+
+    <br>
+    <button class="btn" onclick="validerCours()">✅ Révisions terminées</button>
+    <p id="msgCours"></p>
+  </div>
+</div>
+
+<footer>
+  <p style="text-align:center;">© 2025 Ludovic Zanad – NICO SERVICES</p>
+</footer>
+
+<script>
+  const progression = parseInt(localStorage.getItem("coursDebloque") || "0");
+  if (progression < 23) {
+    alert("🚫 Tu dois d’abord terminer le quiz final.");
+    window.location.href = "cours23.html";
+}
+
+  const coursID = 24;
+  function validerCours() {
+    if (progression < coursID) {
+      localStorage.setItem("coursDebloque", coursID.toString());
+      document.getElementById("msgCours").textContent = "✅ Révisions validées! Tu peux accéder au dernier cours et débloquer ton badge 🎓";
+} else {
+      document.getElementById("msgCours").textContent = "☑ Tu as déjà terminé cette étape.";
+}
+}
+</script>
+
+</body>
+</html>

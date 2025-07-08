@@ -1,0 +1,123 @@
+/* Structure de base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f7f7f7;
+  color: #1f2937;
+  line-height: 1.7;
+}
+
+/* Barre de navigation */
+#nav {
+  background-color: #000;
+  color: gold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+#logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+#menu {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+#menu li a {
+  color: gold;
+  font-weight: bold;
+  text-decoration: none;
+}
+#menu li a:hover {
+  color: white;
+}
+
+/* Contenu principal */
+.main-content {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 30px;
+}
+
+/* Sections */
+section {
+  margin-bottom: 50px;
+}
+h1, h2 {
+  margin-bottom: 15px;
+  color: #111;
+}
+p, li {
+  margin-bottom: 12px;
+  font-size: 1.1em;
+}
+
+/* Bouton CTA */
+.cta {
+  display: inline-block;
+  background-color: gold;
+  color: black;
+  font-weight: bold;
+  padding: 12px 20px;
+  text-decoration: none;
+  border-radius: 6px;
+  margin-top: 15px;
+}
+.cta:hover {
+  background-color: #ffdc64;
+}
+
+/* Témoignages */
+.testimonials {
+  background-color: #fafafa;
+  padding: 40px 30px;
+  border-radius: 8px;
+}
+.testimonials h2 {
+  font-size: 1.6em;
+  color: #1f2937;
+  margin-bottom: 25px;
+  border-left: 5px solid gold;
+  padding-left: 10px;
+}
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+.testimonials-grid blockquote {
+  background-color: white;
+  padding: 20px;
+  border-left: 4px solid gold;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border-radius: 6px;
+  font-style: italic;
+  position: relative;
+}
+.testimonials-grid cite {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.95em;
+  color: #555;
+  font-weight: bold;
+  text-align: right;
+}
+
+/* Footer */
+footer {
+  background-color: #000;
+  color: gold;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9em;
+}
+

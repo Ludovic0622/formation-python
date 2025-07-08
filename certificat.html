@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Certificat – NICO SERVICES</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #f9fafb;
+      margin: 0;
+      padding: 0;
+}
+.main-content {
+      padding: 30px;
+      text-align: center;
+}
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+}
+    canvas {
+      border: 5px solid gold;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      margin: 20px auto;
+      display: block;
+}
+    button {
+      background-color: gold;
+      color: black;
+      border: none;
+      padding: 12px 24px;
+      font-weight: bold;
+      font-size: 1em;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 20px;
+}
+    button:hover {
+      background-color: #ffd84a;
+}
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <div id="nav">
+    <div id="logo">🐍 NICO SERVICES</div>
+    <ul id="menu">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="cours.html">Cours</a></li>
+      <li><a href="projets.html">Projets</a></li>
+      <li><a href="premium.html" class="btn">💎 Modules Premium</a></li>
+    </ul>
+  </div>
+
+  <!-- Contenu principal -->
+  <div class="main-content">
+    <h1>🎉 Bravo <span id="nomComplet">...</span>!</h1>
+    <p>Tu as terminé les 25 cours Python. Voici ton certificat officiel:</p>
+
+    <canvas id="canvasCertificat" width="1000" height="700"></canvas>
+    <button onclick="telechargerImage()">📥 Télécharger mon certificat</button>
+  </div>
+
+  <footer>
+    <p>© 2025 Ludovic Zanad – Boutique NICO SERVICES</p>
+  </footer>
+
+  <script>
+    const prenom = localStorage.getItem("prenomUtilisateur") || "";
+    const nom = localStorage.getItem("nomUtilisateur") || "";
+    const progression = parseInt(localStorage.getItem("coursDebloque") || "1");
+
+    if (!prenom || progression < 25) {
+      alert("🚫 Tu dois terminer tous les cours pour voir ton certificat.");
+      window.location.href = "cours.html";
+}
+
+    const fullName = (prenom + " " + nom).toUpperCase();
+    document.getElementById("nomComplet").textContent = fullName;
+
+    const canvas = document.getElementById("canvasCertificat");
+    const ctx = canvas.getContext("2d");
+
+    // fond
+    ctx.fillStyle = "#fdfdfd";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // titre
+    ctx.font = "bold 38px Verdana";
+    ctx.fillStyle = "#111";
+    ctx.textAlign = "center";
+    ctx.fillText("CERTIFICAT DE RÉUSSITE", canvas.width / 2, 100);
+
+    // nom
+    ctx.font = "bold 50px Georgia";
+    ctx.fillStyle = "#2563eb";
+    ctx.fillText(fullName, canvas.width / 2, 200);
+
+    // mention
+    ctx.font = "28px Arial";
+    ctx.fillStyle = "#444";
+    ctx.fillText("a obtenu la maîtrise des bases du langage Python", canvas.width / 2, 280);
+
+    // badge visuel
+    ctx.font = "24px monospace";
+    ctx.fillStyle = "darkgoldenrod";
+    ctx.fillText("🏅 Formation Python – NICO SERVICES", canvas.width / 2, 350);
+
+    // date & signature
+    ctx.font = "20px sans-serif";
+    ctx.fillStyle = "#555";
+    ctx.fillText("Délivré en 2025 • Ludovic Zanad", canvas.width / 2, 480);
+    ctx.fillText("Plateforme pédagogique NICO SERVICES", canvas.width / 2, 520);
+
+    function telechargerImage() {
+      const lien = document.createElement("a");
+      lien.download = "certificat-" + prenom + ".png";
+      lien.href = canvas.toDataURL("image/png");
+      lien.click();
+}
+  </script>
+</body>
+</html>

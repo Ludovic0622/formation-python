@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Inscription – NICO SERVICES</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    form label {
+      font-weight: bold;
+      margin-top: 15px;
+}
+
+    form input,
+    form select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+}
+
+    form input[type="checkbox"] {
+      width: auto;
+      margin-right: 8px;
+}
+
+    form button {
+      margin-top: 20px;
+}
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <div id="nav">
+    <div id="logo">🐍 NICO SERVICES</div>
+    <ul id="menu">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="connexion.html">Connexion</a></li>
+    </ul>
+  </div>
+
+  <!-- Formulaire -->
+  <div class="main-content">
+    <h1>📝 Crée ton compte apprenant</h1>
+    <form id="formInscription">
+      <label for="prenom">Prénom</label>
+      <input type="text" id="prenom" required />
+
+      <label for="nom">Nom</label>
+      <input type="text" id="nom" required />
+
+      <label for="naissance">Date de naissance</label>
+      <input type="date" id="naissance" required />
+
+      <label for="email">Adresse email</label>
+      <input type="email" id="email" required />
+
+      <label for="motdepasse">Mot de passe</label>
+      <input type="password" id="motdepasse" required />
+
+      <label for="niveau">Ton niveau actuel</label>
+      <select id="niveau" required>
+        <option value="">-- Choisis ton niveau --</option>
+        <option value="Débutant">Débutant(e)</option>
+        <option value="Intermédiaire">Intermédiaire</option>
+        <option value="Avancé">Avancé</option>
+      </select>
+
+      <label for="objectif">Pourquoi apprends-tu Python ?</label>
+      <input type="text" id="objectif" placeholder="Ex: Reconvertir, trouver un travail, curiosité..." required />
+
+      <label>
+        <input type="checkbox" id="cgu" required />
+        J’accepte les conditions générales d'utilisation.
+      </label>
+
+      <button type="submit">🎓 Valider mon inscription</button>
+    </form>
+    <p id="message" style="margin-top: 15px;"></p>
+  </div>
+
+  <footer>
+    <p>© 2025 Ludovic Zanad – Boutique NICO SERVICES</p>
+  </footer>
+
+  <script>
+    document.getElementById("formInscription").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const prenom = document.getElementById("prenom").value.trim();
+      const nom = document.getElementById("nom").value.trim();
+      const naissance = document.getElementById("naissance").value;
+      const email = document.getElementById("email").value.trim();
+      const motdepasse = document.getElementById("motdepasse").value;
+      const niveau = document.getElementById("niveau").value;
+      const objectif = document.getElementById("objectif").value.trim();
+
+      localStorage.setItem("prenomUtilisateur", prenom);
+      localStorage.setItem("nomUtilisateur", nom);
+      localStorage.setItem("naissanceUtilisateur", naissance);
+      localStorage.setItem("emailUtilisateur", email);
+      localStorage.setItem("motdepasseUtilisateur", motdepasse);
+      localStorage.setItem("niveauUtilisateur", niveau);
+      localStorage.setItem("objectifUtilisateur", objectif);
+      localStorage.setItem("coursDebloque", 1);
+
+      document.getElementById("message").textContent = `Bienvenue ${prenom}, ton compte est enregistré 🎉`;
+      setTimeout(() => {
+        window.location.href = "cours.html";
+}, 2000);
+});
+  </script>
+</body>
+</html>

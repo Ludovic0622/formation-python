@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cours 12 – Logique booléenne</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: "Segoe UI", sans-serif; background: #f9fafb;}
+.content {
+      max-width: 800px; margin: auto; padding: 30px;
+      background: white; border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+    h1 { text-align: center; margin-bottom: 20px;}
+    pre {
+      background: #f3f4f6; padding: 15px;
+      border-radius: 8px; overflow-x: auto;
+}
+.btn {
+      background: #2563eb; color: white;
+      border: none; padding: 12px 24px;
+      border-radius: 6px; font-weight: bold;
+      margin-top: 20px; cursor: pointer;
+}
+.btn:hover { background: #1e40af;}
+    #msgCours { margin-top: 15px; font-style: italic; color: #2563eb;}
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<div id="nav">
+  <div id="logo">🐍 NICO SERVICES</div>
+  <ul id="menu">
+    <li><a href="index.html">Accueil</a></li>
+      <li><a href="cours.html">Cours</a></li>
+      <li><a href="projets.html">Projets</a></li>
+      <li><a href="premium.html" class="btn">💎 Modules Premium</a></li>
+  </ul>
+</div>
+
+<!-- Contenu -->
+<div class="main-content">
+  <div class="content">
+    <h1>🧠 Cours 12: Logique booléenne</h1>
+
+    <h2>🎯 Objectif</h2>
+    <p>Maîtriser les opérateurs logiques (`and`, `or`, `not`) pour combiner des conditions et affiner les prises de décision dans le code.</p>
+
+    <h2>📘 Explication</h2>
+    <ul>
+      <li><code>True</code> et <code>False</code> sont les deux seules valeurs booléennes</li>
+      <li><code>and</code> → toutes les conditions doivent être vraies</li>
+      <li><code>or</code> → au moins une doit être vraie</li>
+      <li><code>not</code> → inverse la valeur (ex: <code>not True = False</code>)</li>
+    </ul>
+
+    <h2>✍ Exemple de code</h2>
+    <pre><code>est_inscrit = True
+age = 17
+
+if est_inscrit and age>= 16:
+    print("✅ Accès autorisé")
+elif not est_inscrit:
+    print("🔒 Tu dois t’inscrire d’abord")
+else:
+    print("🛑 Accès refusé: âge insuffisant")</code></pre>
+
+    <a href="https://replit.com" target="_blank" class="btn">👨‍💻 Tester sur Replit</a>
+    <br><br>
+    <button class="btn" onclick="validerCours()">✅ J’ai terminé ce cours</button>
+    <p id="msgCours"></p>
+  </div>
+</div>
+
+<footer>
+  <p style="text-align:center;">© 2025 Ludovic Zanad – Boutique NICO SERVICES</p>
+</footer>
+
+<script>
+  const progression = parseInt(localStorage.getItem("coursDebloque") || "0");
+  if (progression < 11) {
+    alert("🚫 Tu dois d’abord terminer le cours 11.");
+    window.location.href = "cours11.html";
+}
+
+  const coursID = 12;
+  function validerCours() {
+    if (progression < coursID) {
+      localStorage.setItem("coursDebloque", coursID.toString());
+      document.getElementById("msgCours").textContent = "✅ Cours 12 validé! Tu peux continuer.";
+} else {
+      document.getElementById("msgCours").textContent = "☑ Ce cours est déjà terminé.";
+}
+}
+</script>
+
+</body>
+</html>

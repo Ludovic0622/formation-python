@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Projet mini 1 – Carnet d’élève</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: "Segoe UI", sans-serif; background: #f9fafb;}
+.content {
+      max-width: 800px; margin: auto; padding: 30px;
+      background: white; border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+    h1 { text-align: center; margin-bottom: 20px;}
+    pre {
+      background: #f3f4f6; padding: 15px;
+      border-radius: 8px; overflow-x: auto;
+}
+.btn {
+      background: #10b981; color: white;
+      border: none; padding: 12px 24px;
+      border-radius: 6px; font-weight: bold;
+      margin-top: 20px; cursor: pointer;
+}
+.btn:hover { background: #059669;}
+    #msgCours { margin-top: 15px; font-style: italic; color: #10b981;}
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<div id="nav">
+  <div id="logo">🐍 NICO SERVICES</div>
+  <ul id="menu">
+    <li><a href="index.html">Accueil</a></li>
+      <li><a href="cours.html">Cours</a></li>
+      <li><a href="projets.html">Projets</a></li>
+      <li><a href="premium.html" class="btn">💎 Modules Premium</a></li>
+  </ul>
+</div>
+
+<!-- Contenu -->
+<div class="main-content">
+  <div class="content">
+    <h1>🎓 Projet mini 1: Carnet d’élève</h1>
+
+    <h2>🎯 Objectif</h2>
+    <p>Créer un petit programme qui demande les notes d’un élève, les stocke dans une liste, calcule la moyenne, et affiche un message adapté.</p>
+
+    <h2>📘 Recommandations</h2>
+    <ul>
+      <li>Utilise une <code>liste</code> pour stocker les notes</li>
+      <li>Fais une <code>boucle</code> pour saisir plusieurs notes</li>
+      <li>Utilise une <code>fonction</code> pour calculer la moyenne</li>
+      <li>Affiche un <code>message conditionnel</code> selon le résultat</li>
+    </ul>
+
+    <h2>✍ Exemple de structure</h2>
+    <pre><code># Exemple: carnet de notes
+notes = []
+nb = int(input("Combien de matières? "))
+
+for i in range(nb):
+    note = float(input("Note " + str(i+1) + ": "))
+    notes.append(note)
+
+def moyenne(liste):
+    return sum(liste) / len(liste)
+
+moy = moyenne(notes)
+print("📊 Moyenne:", round(moy, 2))
+
+if moy>= 16:
+    print("🏅 Excellent!")
+elif moy>= 12:
+    print("🙂 Moyenne correcte")
+else:
+    print("⚠ Besoin d’efforts")</code></pre>
+
+    <a href="https://replit.com" target="_blank" class="btn">🧪 Tester sur Replit</a>
+    <br><br>
+    <button class="btn" onclick="validerCours()">✅ J’ai terminé le projet</button>
+    <p id="msgCours"></p>
+  </div>
+</div>
+
+<footer>
+  <p style="text-align:center;">© 2025 Ludovic Zanad – Boutique NICO SERVICES</p>
+</footer>
+
+<script>
+  const progression = parseInt(localStorage.getItem("coursDebloque") || "0");
+  if (progression < 15) {
+    alert("🚫 Tu dois d’abord terminer le cours 15.");
+    window.location.href = "cours15.html";
+}
+
+  const coursID = 16;
+  function validerCours() {
+    if (progression < coursID) {
+      localStorage.setItem("coursDebloque", coursID.toString());
+      document.getElementById("msgCours").textContent = "✅ Projet mini 1 terminé! Bravo 👏";
+} else {
+      document.getElementById("msgCours").textContent = "☑ Tu as déjà validé ce projet.";
+}
+}
+</script>
+
+</body>
+</html>

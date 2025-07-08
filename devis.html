@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Demande de devis – NICO SERVICES</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: "Segoe UI", sans-serif; background: #fafafa;}
+.container {
+      max-width: 800px; margin: auto; padding: 40px;
+      background: white; border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+    h1, h2 { text-align: center; margin-bottom: 25px; color: #1e3a8a;}
+    form label { display: block; margin-top: 15px; font-weight: bold;}
+    form input, form textarea, form select {
+      width: 100%; padding: 12px;
+      margin-top: 8px; border: 1px solid #ccc;
+      border-radius: 8px; font-size: 1em;
+}
+    button {
+      background: #2563eb; color: white;
+      border: none; padding: 12px 24px;
+      margin-top: 25px; border-radius: 6px;
+      font-weight: bold; cursor: pointer;
+}
+    button:hover { background: #1d4ed8;}
+.note { margin-top: 20px; font-size: 0.9em; color: #555; text-align: center;}
+  </style>
+</head>
+<body>
+
+<div id="nav">
+  <div id="logo">📩 DEMANDE DE DEVIS</div>
+  <ul id="menu">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="offres.html">Offres</a></li>
+    <li><a href="premium.html">Modules Premium</a></li>
+  </ul>
+</div>
+
+<div class="container">
+  <h1>💼 Demande de devis personnalisé</h1>
+  <p style="text-align:center;">Tu représentes une école, une entreprise ou un groupe ? Remplis ce formulaire pour obtenir une offre sur mesure avec accès multiples, certificat, suivi ou facturation 💻📦</p>
+
+  <form>
+    <label for="nom">Nom complet / Institution</label>
+    <input type="text" id="nom" name="nom" required>
+
+    <label for="email">Adresse email</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="type">Type de projet</label>
+    <select id="type" name="type">
+      <option value="formation">Formation complète Python</option>
+      <option value="multi-accès">Accès multi-utilisateurs</option>
+      <option value="jeux">Module jeux & Pygame</option>
+      <option value="interface">Interface graphique & Tkinter</option>
+      <option value="data">Data science</option>
+      <option value="web">Développement web (Flask)</option>
+      <option value="autre">Autre (à préciser)</option>
+    </select>
+
+    <label for="message">Précise ton besoin:</label>
+    <textarea id="message" name="message" rows="5" required></textarea>
+
+    <button type="submit">📨 Envoyer la demande</button>
+  </form>
+
+  <p class="note">⏱ Réponse sous 48h • Aucun paiement requis ici • Contact professionnel uniquement</p>
+</div>
+
+<footer>
+  <p style="text-align:center;">© 2025 NICO SERVICES – Contact via attypozanadludovic@gmail.com</p>
+</footer>
+
+</body>
+</html>

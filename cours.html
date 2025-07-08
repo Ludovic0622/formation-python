@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cours Python – NICO SERVICES</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: "Segoe UI", sans-serif; background-color: #f9fafb; margin: 0; padding: 0;}
+.main-content {
+      max-width: 960px;
+      margin: auto;
+      padding: 30px;
+}
+    h1 { text-align: center; margin-bottom: 25px;}
+.section {
+      background: #fff;
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+}
+    ul.cours {
+      list-style: none;
+      padding-left: 0;
+}
+    ul.cours li {
+      margin: 12px 0;
+      padding: 10px 15px;
+      border-radius: 6px;
+      background-color: #f3f4f6;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+}
+    ul.cours li.locked {
+      opacity: 0.5;
+      pointer-events: none;
+}
+    ul.cours li a {
+      color: #111827;
+      text-decoration: none;
+      font-weight: bold;
+}
+.badge {
+      padding: 4px 8px;
+      border-radius: 6px;
+      background-color: #10b981;
+      color: white;
+      font-size: 0.85em;
+}
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <div id="nav">
+    <div id="logo">🐍 NICO SERVICES</div>
+    <ul id="menu">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="cours.html">Cours</a></li>
+      <li><a href="premium.html" class="btn">💎 Modules Premium</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <h1>📘 Formation complète — Python pour tous</h1>
+
+    <div class="section">
+      <h2>👋 Bienvenue dans l’univers Python</h2>
+      <p>Python est un langage créé en 1991 par <strong>Guido van Rossum</strong>. Il est simple, lisible, et utilisé partout : intelligence artificielle, jeux vidéo, applications, data science, cybersécurité…</p>
+      <p>Des entreprises comme Google, Netflix, Instagram ou Spotify s’en servent au quotidien.</p>
+    </div>
+
+    <div class="section">
+      <h2>🧰 Outils recommandés</h2>
+      <ul>
+        <li><strong>Python</strong> – <a href="https://www.python.org/downloads/">Télécharger ici</a></li>
+    <li><strong>Visual Studio Code (VS Code)</strong> – <a href="https://code.visualstudio.com/">Télécharger ici</a></li>
+    <li><strong>Extension Python pour VS Code</strong> – Disponible dans le Marketplace intégré</li>
+    <li><strong>pip</strong> – Inclus avec Python pour installer des bibliothèques</li>
+    <li><strong>Jupyter Notebook</strong> – À installer avec <span class="code">pip install notebook</span></li>
+
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>📚 Liste des 25 cours</h2>
+      <ul class="cours" id="listeCours"></ul>
+    </div>
+  </div>
+
+  <footer>
+    <p style="text-align:center;">© 2025 Ludovic Zanad – Boutique NICO SERVICES</p>
+  </footer>
+
+  <script>
+    const progression = parseInt(localStorage.getItem("coursDebloque") || "0");
+    const liste = [
+      "Introduction à Python",
+      "Variables & types",
+      "Conditions",
+      "Boucles",
+      "Fonctions",
+      "Listes",
+      "Dictionnaires",
+      "Entrées utilisateur",
+      "Modules",
+      "Fichiers",
+      "Exceptions",
+      "Logique booléenne",
+      "Boucles imbriquées",
+      "Compréhensions de liste",
+      "Chaînes de caractères",
+      "Projet mini 1",
+      "Classes & objets",
+      "Attributs & méthodes",
+      "Héritage",
+      "Projet mini 2",
+      "Bibliothèques utiles",
+      "Projet avec Turtle",
+      "Quiz final",
+      "Révisions",
+      "🎓 Cours final & badge"
+    ];
+
+    let html = "";
+    for (let i = 0; i < liste.length; i++) {
+      const num = i + 1;
+      const locked = progression < num? "locked": "";
+      const badge = progression>= num? "<span class='badge'>✔ Terminé</span>": "";
+      html += `<li class="${locked}">
+        <a href="cours${num}.html">${num < 10? "0"+num: num} – ${liste[i]}</a>
+        ${badge}
+      </li>`;
+}
+    document.getElementById("listeCours").innerHTML = html;
+  </script>
+
+</body>
+</html>

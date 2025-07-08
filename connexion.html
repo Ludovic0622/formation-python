@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Connexion – NICO SERVICES</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    form label {
+      font-weight: bold;
+      margin-top: 15px;
+}
+    form input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+}
+    form button {
+      margin-top: 20px;
+}
+.forgot {
+      margin-top: 12px;
+      font-size: 0.95em;
+}
+.forgot a {
+      color: #2563eb;
+      text-decoration: none;
+}
+.forgot a:hover {
+      text-decoration: underline;
+}
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <div id="nav">
+    <div id="logo">🐍 NICO SERVICES</div>
+    <ul id="menu">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="inscription.html">Inscription</a></li>
+    </ul>
+  </div>
+
+  <!-- Formulaire -->
+  <div class="main-content">
+    <h1>🔐 Connexion à ton compte</h1>
+    <form id="formConnexion">
+      <label for="emailLogin">Adresse email</label>
+      <input type="email" id="emailLogin" required />
+
+      <label for="mdpLogin">Mot de passe</label>
+      <input type="password" id="mdpLogin" required />
+
+      <button type="submit">Se connecter</button>
+    </form>
+
+    <div class="forgot">
+      🔑 <a href="contact.html">Mot de passe oublié ? Contacte le support</a>
+    </div>
+
+    <p id="msgErreur" style="color: red; margin-top: 15px;"></p>
+  </div>
+
+  <footer>
+    <p>© 2025 Ludovic Zanad – Boutique NICO SERVICES</p>
+  </footer>
+
+  <script>
+    document.getElementById("formConnexion").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("emailLogin").value.trim();
+      const mdp = document.getElementById("mdpLogin").value;
+      const storedEmail = localStorage.getItem("emailUtilisateur");
+      const storedMdp = localStorage.getItem("motdepasseUtilisateur");
+      const prenom = localStorage.getItem("prenomUtilisateur") || "visiteur";
+
+      if (email === storedEmail && mdp === storedMdp) {
+        alert(👋 Bienvenue ${prenom}!);
+        window.location.href = "cours.html";
+} else {
+        document.getElementById("msgErreur").textContent = "❌ Identifiants incorrects. Réessaie ou contacte le support.";
+}
+});
+  </script>
+</body>
+</html>

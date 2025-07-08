@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cours 7 – Dictionnaires</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: "Segoe UI", sans-serif; background: #f9fafb;}
+.content {
+      max-width: 800px; margin: auto; padding: 30px;
+      background: white; border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+    h1 { text-align: center; margin-bottom: 20px;}
+    pre {
+      background: #f3f4f6; padding: 15px;
+      border-radius: 8px; overflow-x: auto;
+}
+.btn {
+      background: #2563eb; color: white;
+      border: none; padding: 12px 24px;
+      border-radius: 6px; font-weight: bold;
+      margin-top: 20px; cursor: pointer;
+}
+.btn:hover { background: #1e40af;}
+    #msgCours { margin-top: 15px; font-style: italic; color: #2563eb;}
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<div id="nav">
+  <div id="logo">🐍 NICO SERVICES</div>
+  <ul id="menu">
+    <<li><a href="index.html">Accueil</a></li>
+      <li><a href="cours.html">Cours</a></li>
+      <li><a href="projets.html">Projets</a></li>
+      <li><a href="premium.html" class="btn">💎 Modules Premium</a></li>
+  </ul>
+</div>
+
+<!-- Contenu -->
+<div class="main-content">
+  <div class="content">
+    <h1>🗂 Cours 7: Dictionnaires</h1>
+
+    <h2>🎯 Objectif</h2>
+    <p>Apprendre à créer et utiliser des dictionnaires en Python, qui permettent d’associer des clés à des valeurs.</p>
+
+    <h2>📘 Explication</h2>
+    <ul>
+      <li>Un dictionnaire s’écrit avec des <code>{}</code> et contient des paires <code>clé: valeur</code></li>
+      <li>On y accède en utilisant la clé: <code>dico["nom"]</code></li>
+      <li>On peut ajouter, modifier ou supprimer des entrées facilement</li>
+    </ul>
+
+    <h2>✍ Exemple de code</h2>
+    <pre><code># Création d’un dictionnaire
+utilisateur = {
+    "nom": "Lina",
+    "age": 22,
+    "abonné": True
+}
+
+# Affichage d'informations
+print("👤 Nom:", utilisateur["nom"])
+print("🎂 Âge:", utilisateur["age"])
+print("✅ Abonné:", utilisateur["abonné"])
+
+# Ajout d’une nouvelle clé
+utilisateur["email"] = "lina@email.com"</code></pre>
+
+    <a href="https://replit.com" target="_blank" class="btn">👨‍💻 Tester sur Replit</a>
+    <br><br>
+    <button class="btn" onclick="validerCours()">✅ J’ai terminé ce cours</button>
+    <p id="msgCours"></p>
+  </div>
+</div>
+
+<footer>
+  <p style="text-align:center;">© 2025 Ludovic Zanad – Boutique NICO SERVICES</p>
+</footer>
+
+<script>
+  const progression = parseInt(localStorage.getItem("coursDebloque") || "0");
+  if (progression < 6) {
+    alert("🚫 Tu dois d’abord terminer le cours 6.");
+    window.location.href = "cours6.html";
+}
+
+  const coursID = 7;
+  function validerCours() {
+    if (progression < coursID) {
+      localStorage.setItem("coursDebloque", coursID.toString());
+      document.getElementById("msgCours").textContent = "✅ Cours 7 validé! Tu peux passer au suivant.";
+} else {
+      document.getElementById("msgCours").textContent = "☑ Ce cours est déjà terminé.";
+}
+}
+</script>
+
+</body>
+</html>

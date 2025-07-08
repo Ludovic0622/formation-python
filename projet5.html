@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Projet 5 – Pierre-Papier-Ciseaux</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+.content {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+}
+    pre {
+      background-color: #f3f4f6;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+}
+.btn {
+      background-color: #10b981;
+      color: white;
+      text-decoration: none;
+      padding: 12px 20px;
+      display: inline-block;
+      border-radius: 6px;
+      font-weight: bold;
+      margin-top: 20px;
+      cursor: pointer;
+}
+.btn:hover {
+      background-color: #059669;
+}
+    #msgProjet {
+      margin-top: 15px;
+      font-style: italic;
+      color: #2563eb;
+}
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <div id="nav">
+    <div id="logo">🐍 NICO SERVICES</div>
+    <ul id="menu">
+      <li><a href="projets.html">⬅ Retour aux projets</a></li>
+      <li><a href="cours.html">Cours</a></li>
+      <li><a href="profil.html">Profil</a></li>
+    </ul>
+  </div>
+
+  <!-- Contenu principal -->
+  <div class="main-content">
+    <div class="content">
+      <h1>🕹 Projet 5: Pierre – Papier – Ciseaux</h1>
+
+      <h2>📋 Objectif</h2>
+      <p>Coder un jeu où l’utilisateur affronte l’ordinateur au célèbre jeu “pierre, papier, ciseaux” en Python.</p>
+
+      <h2>🧠 Notions utiles</h2>
+      <ul>
+        <li>Fonction <code>random.choice()</code></li>
+        <li>Conditions avec <code>if / elif / else</code></li>
+        <li>Chaînes de caractères & entrée utilisateur</li>
+      </ul>
+
+      <h2>📌 Exemple de code</h2>
+      <pre><code>import random
+
+options = ["pierre", "papier", "ciseaux"]
+ordi = random.choice(options)
+joueur = input("Ton choix (pierre, papier ou ciseaux): ").lower()
+
+print(f"L’ordinateur a choisi: {ordi}")
+
+if joueur == ordi:
+    print("🤝 Égalité!")
+elif (joueur == "pierre" and ordi == "ciseaux") or \
+     (joueur == "papier" and ordi == "pierre") or \
+     (joueur == "ciseaux" and ordi == "papier"):
+    print("🎉 Tu gagnes!")
+elif joueur in options:
+    print("💻 L’ordinateur gagne.")
+else:
+    print("❌ Choix invalide!")</code></pre>
+
+      <a href="https://replit.com/" target="_blank" class="btn">🎮 Tester sur Replit</a>
+
+      <br><br>
+      <button onclick="validerProjet()" class="btn">✅ J’ai terminé ce projet</button>
+      <p id="msgProjet"></p>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Ludovic Zanad – Boutique NICO SERVICES</p>
+  </footer>
+
+  <script>
+    // Contrôle d’accès: cours 25 requis
+    const progression = parseInt(localStorage.getItem("coursDebloque") || "1");
+    if (progression < 25) {
+      alert("🔐 Ce projet est réservé aux membres certifiés.");
+      window.location.href = "cours.html";
+}
+
+    // Validation du projet
+    const projetID = 5;
+    function validerProjet() {
+      let projetsValides = JSON.parse(localStorage.getItem("projetsValides")) || [];
+      if (!projetsValides.includes(projetID)) {
+        projetsValides.push(projetID);
+        localStorage.setItem("projetsValides", JSON.stringify(projetsValides));
+        document.getElementById("msgProjet").textContent = "✅ Projet enregistré comme terminé.";
+} else {
+        document.getElementById("msgProjet").textContent = "☑ Tu l’as déjà terminé.";
+        }
+}
+  </script>
+</body>
+</html>

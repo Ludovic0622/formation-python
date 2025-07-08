@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cours 6 – Listes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: "Segoe UI", sans-serif; background: #f9fafb;}
+.content {
+      max-width: 800px; margin: auto; padding: 30px;
+      background: white; border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+    h1 { text-align: center; margin-bottom: 20px;}
+    pre {
+      background: #f3f4f6; padding: 15px;
+      border-radius: 8px; overflow-x: auto;
+}
+.btn {
+      background: #2563eb; color: white;
+      border: none; padding: 12px 24px;
+      border-radius: 6px; font-weight: bold;
+      margin-top: 20px; cursor: pointer;
+}
+.btn:hover { background: #1e40af;}
+    #msgCours { margin-top: 15px; font-style: italic; color: #2563eb;}
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<div id="nav">
+  <div id="logo">🐍 NICO SERVICES</div>
+  <ul id="menu">
+    <li><a href="index.html">Accueil</a></li>
+      <li><a href="cours.html">Cours</a></li>
+      <li><a href="projets.html">Projets</a></li>
+      <li><a href="premium.html" class="btn">💎 Modules Premium</a></li>
+  </ul>
+</div>
+
+<!-- Contenu -->
+<div class="main-content">
+  <div class="content">
+    <h1>📚 Cours 6: Listes</h1>
+
+    <h2>🎯 Objectif</h2>
+    <p>Apprendre à créer, modifier et parcourir des listes en Python, qui permettent de stocker plusieurs données dans un seul conteneur.</p>
+
+    <h2>📘 Explication</h2>
+    <ul>
+      <li>Une liste est une séquence d’éléments entre crochets <code>[]</code></li>
+      <li>Chaque élément a un <em>index</em> (position), qui commence à 0</li>
+      <li>On peut accéder, ajouter, supprimer, trier, compter, etc.</li>
+    </ul>
+
+    <h2>✍ Exemple de code</h2>
+    <pre><code># Création d’une liste
+fruits = ["pomme", "banane", "kiwi"]
+
+# Ajout d’un élément
+fruits.append("fraise")
+
+# Accès à un élément
+print("Premier fruit:", fruits[0])
+
+# Parcours de la liste
+for fruit in fruits:
+    print("🍎", fruit)</code></pre>
+
+    <a href="https://replit.com" target="_blank" class="btn">👨‍💻 Tester sur Replit</a>
+    <br><br>
+    <button class="btn" onclick="validerCours()">✅ J’ai terminé ce cours</button>
+    <p id="msgCours"></p>
+  </div>
+</div>
+
+<footer>
+  <p style="text-align:center;">© 2025 Ludovic Zanad – Boutique NICO SERVICES</p>
+</footer>
+
+<script>
+  const progression = parseInt(localStorage.getItem("coursDebloque") || "0");
+  if (progression < 5) {
+    alert("🚫 Tu dois d’abord terminer le cours 5.");
+    window.location.href = "cours5.html";
+}
+
+  const coursID = 6;
+  function validerCours() {
+    if (progression < coursID) {
+      localStorage.setItem("coursDebloque", coursID.toString());
+      document.getElementById("msgCours").textContent = "✅ Cours 6 validé! Tu peux continuer.";
+} else {
+      document.getElementById("msgCours").textContent = "☑ Ce cours est déjà terminé.";
+}
+}
+</script>
+
+</body>
+</html>

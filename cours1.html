@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cours 1 – Introduction à Python</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: "Segoe UI", sans-serif; background-color: #f9fafb;}
+.content {
+      max-width: 800px;
+      margin: auto;
+      padding: 30px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+    h1 { text-align: center; margin-bottom: 20px;}
+    pre {
+      background: #f3f4f6;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+}
+.btn {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-weight: bold;
+      margin-top: 20px;
+      cursor: pointer;
+}
+.btn:hover { background: #1e40af;}
+    #msgCours { margin-top: 15px; font-style: italic; color: #2563eb;}
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<div id="nav">
+  <div id="logo">🐍 NICO SERVICES</div>
+  <ul id="menu">
+    <li><a href="index.html">Accueil</a></li>
+      <li><a href="cours.html">Cours</a></li>
+      <li><a href="projets.html">Projets</a></li>
+      <li><a href="premium.html" class="btn">💎 Modules Premium</a></li>
+  </ul>
+</div>
+
+<!-- Contenu principal -->
+<div class="main-content">
+  <div class="content">
+    <h1>🐍 Cours 1: Introduction à Python</h1>
+
+    <h2>🎯 Objectif</h2>
+    <p>Comprendre ce qu’est Python, son origine et pourquoi il est un langage incontournable aujourd’hui.</p>
+
+    <h2>📖 Histoire rapide</h2>
+    <p>Python a été créé en 1991 par <strong>Guido van Rossum</strong>, un informaticien néerlandais. Son nom vient du spectacle “Monty Python”!
+    Il a été conçu pour être lisible, simple, et très puissant. Aujourd’hui, il est utilisé par Google, Netflix, Meta, NASA et bien d’autres.</p>
+
+    <h2>🔧 À quoi sert Python?</h2>
+    <ul>
+      <li>Développement web (Django, Flask)</li>
+      <li>Automatisation de tâches</li>
+      <li>Jeux vidéo, applications</li>
+      <li>Analyse de données / IA / Machine Learning</li>
+    </ul>
+
+    <h2>💬 Ton premier programme Python</h2>
+    <pre><code># Voici ton tout premier script:
+print("👋 Bonjour Python!")
+print("2 + 2 =", 2 + 2)</code></pre>
+
+    <a href="https://replit.com/" target="_blank" class="btn">👨‍💻 Tester sur Replit</a>
+    <br><br>
+    <button class="btn" onclick="validerCours()">✅ J’ai terminé ce cours</button>
+    <p id="msgCours"></p>
+  </div>
+</div>
+
+<footer>
+  <p style="text-align:center;">© 2025 Ludovic Zanad – Boutique NICO SERVICES</p>
+</footer>
+
+<script>
+  const coursID = 1;
+  const progression = parseInt(localStorage.getItem("coursDebloque") || "0");
+
+  function validerCours() {
+    if (progression < coursID) {
+      localStorage.setItem("coursDebloque", coursID.toString());
+      document.getElementById("msgCours").textContent = "✅ Cours 1 validé! Tu peux accéder au suivant.";
+} else {
+      document.getElementById("msgCours").textContent = "☑ Ce cours est déjà terminé.";
+}
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cours 23 – Quiz final Python</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: "Segoe UI", sans-serif; background: #f9fafb; margin: 0; padding: 0;}
+.content {
+      max-width: 800px; margin: auto; padding: 30px;
+      background: white; border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+    h1 { text-align: center; margin-bottom: 20px;}
+.question { margin-bottom: 30px;}
+.question h3 { margin-bottom: 10px;}
+    label { display: block; margin-bottom: 5px;}
+.btn {
+      background: #2563eb; color: white; border: none;
+      padding: 12px 24px; border-radius: 6px; font-weight: bold;
+      cursor: pointer; margin-top: 20px;
+}
+.btn:hover { background: #1e40af;}
+.result { margin-top: 15px; font-style: italic; color: #2563eb;}
+    #finalResult { margin-top: 30px; font-weight: bold; font-size: 1.1em; color: #0f766e;}
+  </style>
+</head>
+<body>
+
+<div id="nav">
+  <div id="logo">🧠 NICO SERVICES</div>
+  <ul id="menu">
+    <li><a href="index.html">Accueil</a></li>
+      <li><a href="cours.html">Cours</a></li>
+      <li><a href="projets.html">Projets</a></li>
+      <li><a href="premium.html" class="btn">💎 Modules Premium</a></li>
+  </ul>
+</div>
+
+<div class="main-content">
+  <div class="content">
+    <h1>🧪 Quiz final — Teste ton niveau Python</h1>
+
+    <form id="quizForm">
+      <div class="question">
+        <h3>1. Quelle fonction affiche un texte à l’écran?</h3>
+        <label><input type="radio" name="q1" value="a"> write()</label>
+        <label><input type="radio" name="q1" value="b"> echo()</label>
+        <label><input type="radio" name="q1" value="c"> print()</label>
+      </div>
+
+      <div class="question">
+        <h3>2. Quel type représente un nombre à virgule?</h3>
+        <label><input type="radio" name="q2" value="a"> str</label>
+        <label><input type="radio" name="q2" value="b"> float</label>
+        <label><input type="radio" name="q2" value="c"> bool</label>
+      </div>
+
+      <div class="question">
+        <h3>3. Que fait la méthode <code>.append()</code>?</h3>
+        <label><input type="radio" name="q3" value="a"> Elle trie une liste</label>
+        <label><input type="radio" name="q3" value="b"> Elle ajoute un élément à une liste</label>
+        <label><input type="radio" name="q3" value="c"> Elle supprime un élément</label>
+      </div>
+
+      <div class="question">
+        <h3>4. Quel mot-clé permet de répéter une action tant qu’une condition est vraie?</h3>
+        <label><input type="radio" name="q4" value="a"> while</label>
+        <label><input type="radio" name="q4" value="b"> for</label>
+        <label><input type="radio" name="q4" value="c"> repeat</label>
+      </div>
+
+      <div class="question">
+        <h3>5. Quelle est la bonne syntaxe pour créer une fonction?</h3>
+        <label><input type="radio" name="q5" value="a"> function ma_fonction():</label>
+        <label><input type="radio" name="q5" value="b"> def ma_fonction():</label>
+        <label><input type="radio" name="q5" value="c"> create ma_fonction():</label>
+      </div>
+
+      <button type="button" class="btn" onclick="corrigerQuiz()">🎯 Corriger le quiz</button>
+    </form>
+
+    <div id="finalResult"></div>
+    <br><br>
+    <button class="btn" onclick="validerCours()">✅ J’ai terminé le quiz</button>
+    <p id="msgCours"></p>
+  </div>
+</div>
+
+<footer>
+  <p style="text-align:center;">© 2025 Ludovic Zanad – Boutique NICO SERVICES</p>
+</footer>
+
+<script>
+  const progression = parseInt(localStorage.getItem("coursDebloque") || "0");
+  if (progression < 22) {
+    alert("🚫 Tu dois d’abord terminer le projet Turtle.")
+    window.location.href = "cours22.html";
+}
+
+  const coursID = 23;
+  function validerCours() {
+    if (progression < coursID) {
+      localStorage.setItem("coursDebloque", coursID.toString());
+      document.getElementById("msgCours").textContent = "✅ Quiz final validé! Tu peux accéder aux révisions.";
+} else {
+      document.getElementById("msgCours").textContent = "☑ Tu as déjà validé ce quiz.";
+}
+}
+
+  function corrigerQuiz() {
+    const bonnesReponses = { q1: "c", q2: "b", q3: "b", q4: "a", q5: "b"};
+    let score = 0;
+    for (let i = 1; i <= 5; i++) {
+      const nom = "q" + i;
+      const choisi = document.querySelector(input[name="${nom}"]:checked);
+      if (choisi && choisi.value === bonnesReponses[nom]) {
+        score += 1;
+}
+}
+    document.getElementById("finalResult").textContent = 🧠 Tu as obtenu ${score}/5 bonnes réponses;
+}
+</script>
+
+</body>
+</html>

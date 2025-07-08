@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Projet 3 – Renommage automatique</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+.content {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 800px;
+      margin: auto;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+}
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+}
+    pre {
+      background-color: #f3f4f6;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+}
+.btn {
+      background-color: #10b981;
+      color: white;
+      text-decoration: none;
+      padding: 12px 20px;
+      display: inline-block;
+      border-radius: 6px;
+      font-weight: bold;
+      margin-top: 20px;
+      cursor: pointer;
+}
+.btn:hover {
+      background-color: #059669;
+}
+    #msgProjet {
+      margin-top: 15px;
+      font-style: italic;
+      color: #2563eb;
+}
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <div id="nav">
+    <div id="logo">🐍 NICO SERVICES</div>
+    <ul id="menu">
+      <li><a href="projets.html">⬅ Retour aux projets</a></li>
+      <li><a href="cours.html">Cours</a></li>
+      <li><a href="profil.html">Profil</a></li>
+    </ul>
+  </div>
+
+  <!-- Contenu du projet -->
+  <div class="main-content">
+    <div class="content">
+      <h1>📂 Projet 3: Renommage automatique de fichiers</h1>
+
+      <h2>📋 Objectif</h2>
+      <p>Créer un script Python qui parcourt un dossier et renomme tous les fichiers selon un format standardisé: par exemple <code>fichier_1.txt</code>, <code>fichier_2.txt</code>, etc.</p>
+
+      <h2>🧠 Notions utiles</h2>
+      <ul>
+        <li>Bibliothèque <code>os</code></li>
+        <li>Boucle <code>for</code></li>
+        <li>Fonctions: <code>os.listdir()</code>, <code>os.rename()</code>, <code>os.path.splitext()</code></li>
+      </ul>
+
+      <h2>📌 Exemple de code</h2>
+      <pre><code>import os
+
+# Chemin vers le dossier à traiter
+chemin = "C:/Utilisateurs/TonNom/Documents/fichiers"
+
+fichiers = os.listdir(chemin)
+
+for index, nom in enumerate(fichiers):
+    extension = os.path.splitext(nom)[1]
+    nouveau_nom = f"fichier_{index + 1}{extension}"
+
+    ancien_chemin = os.path.join(chemin, nom)
+    nouveau_chemin = os.path.join(chemin, nouveau_nom)
+
+    os.rename(ancien_chemin, nouveau_chemin)
+    print(f"✅ {nom} → {nouveau_nom}")</code></pre>
+
+      <a href="https://replit.com/" target="_blank" class="btn">🧪 Tester sur Replit</a>
+
+      <br><br>
+      <button onclick="validerProjet()" class="btn">✅ J’ai terminé ce projet</button>
+      <p id="msgProjet"></p>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Ludovic Zanad – Boutique NICO SERVICES</p>
+  </footer>
+
+  <script>
+    // Vérification certification
+    const progression = parseInt(localStorage.getItem("coursDebloque") || "1");
+    if (progression < 25) {
+      alert("🔐 Ce projet est réservé aux membres certifiés.");
+      window.location.href = "cours.html";
+}
+
+    // Enregistrement du projet
+    const projetID = 3;
+    function validerProjet() {
+      let projetsValides = JSON.parse(localStorage.getItem("projetsValides")) || [];
+      if (!projetsValides.includes(projetID)) {
+        projetsValides.push(projetID);
+        localStorage.setItem("projetsValides", JSON.stringify(projetsValides));
+        document.getElementById("msgProjet").textContent = "✅ Projet enregistré comme terminé.";
+} else {
+        document.getElementById("msgProjet").textContent = "☑ Tu l’as déjà terminé.";
+}
+}
+</script>
+</body>
+</html>

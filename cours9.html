@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cours 9 – Modules</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: "Segoe UI", sans-serif; background: #f9fafb;}
+.content {
+      max-width: 800px; margin: auto; padding: 30px;
+      background: #fff; border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+    h1 { text-align: center; margin-bottom: 20px;}
+    pre {
+      background: #f3f4f6; padding: 15px;
+      border-radius: 8px; overflow-x: auto;
+}
+.btn {
+      background: #2563eb; color: white;
+      border: none; padding: 12px 24px;
+      border-radius: 6px; font-weight: bold;
+      margin-top: 20px; cursor: pointer;
+}
+.btn:hover { background: #1e40af;}
+    #msgCours { margin-top: 15px; font-style: italic; color: #2563eb;}
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<div id="nav">
+  <div id="logo">🐍 NICO SERVICES</div>
+  <ul id="menu">
+    <li><a href="index.html">Accueil</a></li>
+      <li><a href="cours.html">Cours</a></li>
+      <li><a href="projets.html">Projets</a></li>
+      <li><a href="premium.html" class="btn">💎 Modules Premium</a></li>
+  </ul>
+</div>
+
+<!-- Contenu -->
+<div class="main-content">
+  <div class="content">
+    <h1>📁 Cours 9: Modules en Python</h1>
+
+    <h2>🎯 Objectif</h2>
+    <p>Apprendre à importer et utiliser des modules Python pour étendre les fonctionnalités sans tout réécrire soi-même.</p>
+
+    <h2>📘 Explication</h2>
+    <ul>
+      <li><code>import</code> permet de charger un module</li>
+      <li><code>from... import...</code> permet de charger une fonction précise</li>
+      <li>Modules standards: <code>math</code>, <code>random</code>, <code>datetime</code>, etc.</li>
+    </ul>
+
+    <h2>✍ Exemple de code</h2>
+    <pre><code># Module math
+import math
+
+r = 4
+aire = math.pi * r ** 2
+print("🟢 Aire du cercle:", round(aire, 2))
+
+# Module random
+from random import randint
+nb = randint(1, 100)
+print("🎲 Nombre aléatoire:", nb)</code></pre>
+
+    <a href="https://replit.com" target="_blank" class="btn">👨‍💻 Tester sur Replit</a>
+    <br><br>
+    <button class="btn" onclick="validerCours()">✅ J’ai terminé ce cours</button>
+    <p id="msgCours"></p>
+  </div>
+</div>
+
+<footer>
+  <p style="text-align:center;">© 2025 Ludovic Zanad – Boutique NICO SERVICES</p>
+</footer>
+
+<script>
+  const progression = parseInt(localStorage.getItem("coursDebloque") || "0");
+  if (progression < 8) {
+    alert("🚫 Tu dois d’abord terminer le cours 8.");
+    window.location.href = "cours8.html";
+}
+
+  const coursID = 9;
+  function validerCours() {
+    if (progression < coursID) {
+      localStorage.setItem("coursDebloque", coursID.toString());
+      document.getElementById("msgCours").textContent = "✅ Cours 9 validé! Tu peux passer au suivant.";
+} else {
+      document.getElementById("msgCours").textContent = "☑ Ce cours est déjà terminé.";
+}
+}
+</script>
+
+</body>
+</html>

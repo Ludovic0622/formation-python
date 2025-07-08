@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Projet 4 – Analyse CSV</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+.content {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 800px;
+      margin: auto;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+}
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+}
+    pre {
+      background-color: #f3f4f6;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+}
+.btn {
+      background-color: #10b981;
+      color: white;
+      text-decoration: none;
+      padding: 12px 20px;
+      display: inline-block;
+      border-radius: 6px;
+      font-weight: bold;
+      margin-top: 20px;
+      cursor: pointer;
+}
+.btn:hover {
+      background-color: #059669;
+}
+    #msgProjet {
+      margin-top: 15px;
+      font-style: italic;
+      color: #2563eb;
+}
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <div id="nav">
+    <div id="logo">🐍 NICO SERVICES</div>
+    <ul id="menu">
+      <li><a href="projets.html">⬅ Retour aux projets</a></li>
+      <li><a href="cours.html">Cours</a></li>
+      <li><a href="profil.html">Profil</a></li>
+    </ul>
+  </div>
+
+  <!-- Contenu principal -->
+  <div class="main-content">
+    <div class="content">
+      <h1>📈 Projet 4: Analyse d’un fichier CSV</h1>
+
+      <h2>📋 Objectif</h2>
+      <p>Lire un fichier CSV contenant des données (ex: notes, prix) et calculer la moyenne, le maximum et le minimum.</p>
+
+      <h2>🧠 Notions utiles</h2>
+      <ul>
+        <li>Manipulation de fichiers CSV</li>
+        <li>Bibliothèque <code>csv</code></li>
+        <li>Boucles <code>for</code></li>
+        <li>Calculs statistiques</li>
+      </ul>
+
+      <h2>📌 Exemple de code</h2>
+      <pre><code>import csv
+
+valeurs = []
+
+with open("data.csv", newline="") as fichier:
+    lecteur = csv.reader(fichier)
+    next(lecteur)  # Ignore l'en-tête
+    for ligne in lecteur:
+        valeur = float(ligne[1])  # Suppose que la valeur est en 2e colonne
+        valeurs.append(valeur)
+
+print("📊 Statistiques:")
+print(f"Nombre d'entrées: {len(valeurs)}")
+print(f"Moyenne: {sum(valeurs)/len(valeurs):.2f}")
+print(f"Max: {max(valeurs)} – Min: {min(valeurs)}")</code></pre>
+
+      <a href="https://replit.com/" target="_blank" class="btn">📁 Tester sur Replit</a>
+
+      <br><br>
+      <button onclick="validerProjet()" class="btn">✅ J’ai terminé ce projet</button>
+      <p id="msgProjet"></p>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Ludovic Zanad – Boutique NICO SERVICES</p>
+  </footer>
+
+  <script>
+    // Vérification de certification
+    const progression = parseInt(localStorage.getItem("coursDebloque") || "1");
+    if (progression < 25) {
+      alert("🔐 Ce projet est réservé aux membres certifiés.");
+      window.location.href = "cours.html";
+}
+
+    // Validation du projet
+    const projetID = 4;
+    function validerProjet() {
+      let projetsValides = JSON.parse(localStorage.getItem("projetsValides")) || [];
+      if (!projetsValides.includes(projetID)) {
+        projetsValides.push(projetID);
+        localStorage.setItem("projetsValides", JSON.stringify(projetsValides));
+        document.getElementById("msgProjet").textContent = "✅ Projet enregistré comme terminé.";
+} else {
+        document.getElementById("msgProjet").textContent = "☑ Tu l’as déjà terminé.";
+}
+}
+  </script>
+</body>
+</html>

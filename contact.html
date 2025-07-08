@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <title>Contact – NICO SERVICES</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    form label {
+      font-weight: bold;
+      margin-top: 15px;
+}
+
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-family: inherit;
+      font-size: 1em;
+}
+
+    form button {
+      margin-top: 20px;
+}
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <div id="nav">
+    <div id="logo">🐍 NICO SERVICES</div>
+    <ul id="menu">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="connexion.html">Connexion</a></li>
+      <li><a href="inscription.html">Inscription</a></li>
+    </ul>
+  </div>
+
+  <!-- Contenu principal -->
+  <div class="main-content">
+    <h1>📩 Contacte le support</h1>
+    <p>Tu as un problème de connexion ou tu as perdu ton mot de passe ? Écris-nous ici:</p>
+
+    <form id="formContact">
+      <label for="nomContact">Ton prénom</label>
+      <input type="text" id="nomContact" required />
+
+      <label for="emailContact">Ton adresse email</label>
+      <input type="email" id="emailContact" required />
+
+      <label for="messageContact">Ton message</label>
+      <textarea id="messageContact" rows="6" required placeholder="Explique ta situation ici..."></textarea>
+
+      <button type="submit">📤 Envoyer ma demande</button>
+    </form>
+    <p id="messageConfirm" style="margin-top: 15px;"></p>
+  </div>
+
+  <footer>
+    <p>© 2025 Ludovic Zanad – Boutique NICO SERVICES</p>
+  </footer>
+
+  <script>
+    document.getElementById("formContact").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const nom = document.getElementById("nomContact").value.trim();
+      const email = document.getElementById("emailContact").value.trim();
+
+      document.getElementById("messageConfirm").textContent =
+        `Merci ${nom}, ton message a été transmis. Nous te répondrons à l’adresse ${email}.`;
+
+      // Optionnel: vider les champs
+      document.getElementById("formContact").reset();
+});
+  </script>
+</body>
+</html>

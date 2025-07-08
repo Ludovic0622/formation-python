@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Projet 1 – Devine le nombre</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+.content {
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 10px;
+      max-width: 800px;
+      margin: auto;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+}
+    pre {
+      background-color: #f3f4f6;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+}
+.btn {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: #10b981;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+}
+.btn:hover {
+      background-color: #059669;
+}
+    #msgProjet {
+      margin-top: 15px;
+      font-style: italic;
+      color: #2563eb;
+}
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <div id="nav">
+    <div id="logo">🐍 NICO SERVICES</div>
+    <ul id="menu">
+      <li><a href="projets.html">⬅ Retour aux projets</a></li>
+      <li><a href="cours.html">Cours</a></li>
+      <li><a href="profil.html">Profil</a></li>
+    </ul>
+  </div>
+
+  <!-- Contenu du projet -->
+  <div class="main-content">
+    <div class="content">
+      <h1>🎲 Projet 1: Devine le nombre</h1>
+
+      <h2>📋 Objectif</h2>
+      <p>Créer un jeu dans lequel l’utilisateur doit deviner un nombre choisi aléatoirement par l’ordinateur, entre 1 et 100.</p>
+
+      <h2>🧠 Notions utiles</h2>
+      <ul>
+        <li>Variables</li>
+        <li>Boucles <code>while</code></li>
+        <li>Conditions <code>if / else</code></li>
+        <li>Fonction <code>random.randint()</code></li>
+        <li>Entrée utilisateur <code>input()</code></li>
+      </ul>
+
+      <h2>📌 Exemple de code</h2>
+      <pre><code>import random
+
+nombre_secret = random.randint(1, 100)
+tentatives = 0
+devine = 0
+
+print("🧠 Devine le nombre entre 1 et 100")
+
+while devine!= nombre_secret:
+    devine = int(input("Ta proposition: "))
+    tentatives += 1
+
+    if devine < nombre_secret:
+        print("📉 Trop petit.")
+    elif devine> nombre_secret:
+        print("📈 Trop grand.")
+    else:
+        print(f"🎉 Bravo! Tu as trouvé en {tentatives} tentatives.")</code></pre>
+
+      <a href="https://replit.com/" target="_blank" class="btn">👨‍💻 Tester dans Replit</a>
+
+      <br><br>
+      <button onclick="validerProjet()" class="btn">✅ J’ai terminé ce projet</button>
+      <p id="msgProjet"></p>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Ludovic Zanad – Boutique NICO SERVICES</p>
+  </footer>
+
+  <script>
+    // Contrôle d’accès
+    const progression = parseInt(localStorage.getItem("coursDebloque") || "1");
+    if (progression < 25) {
+      alert("🔐 Ce projet est réservé aux membres certifiés.");
+      window.location.href = "cours.html";
+}
+
+    // Validation du projet
+    const projetID = 1;
+    function validerProjet() {
+      let projetsValides = JSON.parse(localStorage.getItem("projetsValides")) || [];
+      if (!projetsValides.includes(projetID)) {
+        projetsValides.push(projetID);
+        localStorage.setItem("projetsValides", JSON.stringify(projetsValides));
+        document.getElementById("msgProjet").textContent = "✅ Projet enregistré comme terminé.";
+} else {
+        document.getElementById("msgProjet").textContent = "☑ Tu l’as déjà terminé.";
+}
+}
+  </script>
+</body>
+</html>
