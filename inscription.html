@@ -18,7 +18,6 @@
   </style>
 </head>
 <body>
-  <!-- Navigation -->
   <div id="nav">
     <div id="logo">🐍 NICO SERVICES</div>
     <ul id="menu">
@@ -27,7 +26,6 @@
     </ul>
   </div>
 
-  <!-- Formulaire d'inscription -->
   <div class="main-content">
     <h1>📝 Crée ton compte apprenant</h1>
     <form id="formInscription">
@@ -67,12 +65,10 @@
     <p id="message" style="margin-top: 15px;"></p>
   </div>
 
-  <!-- Footer -->
   <footer>
     <p>© 2025 Ludovic Zanad – Boutique NICO SERVICES</p>
   </footer>
 
-  <!-- Script d'inscription -->
   <script>
     document.getElementById("formInscription").addEventListener("submit", async function (e) {
       e.preventDefault();
@@ -88,24 +84,22 @@
 };
 
       try {
-        const res = await fetch("https://9a7b95cf-ab29-4cdb-8015-f36d0b593d2b-00-2iuizvvj1u0tv.worf.replit.dev/register", {
+        const res = await fetch("https://9a7b95cf-ab29-4cdb-8015-f36d0b593d2b-00-2iuizvvj1u0tv.worf.replit.dev/api/register", {
           method: "POST",
           headers: { "Content-Type": "application/json"},
           body: JSON.stringify(data)
 });
 
         const result = await res.json();
-        document.getElementById("message").textContent = result.message || "✅ Inscription envoyée!";
-
+        document.getElementById("message").textContent = result.message || "✅ Inscription réussie!";
         if (res.ok) {
           setTimeout(() => window.location.href = "cours.html", 2000);
 }
 } catch (error) {
         document.getElementById("message").textContent = "❌ Erreur réseau ou serveur inaccessible.";
-        console.error("Erreur d’inscription:", error);
+        console.error("Erreur:", error);
 }
 });
   </script>
 </body>
 </html>
-
