@@ -6,35 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    form label {
-      font-weight: bold;
-      margin-top: 15px;
-}
+    form label { font-weight: bold; margin-top: 15px;}
     form input {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      width: 100%; padding: 10px; margin-top: 5px;
+      border: 1px solid #ccc; border-radius: 5px;
 }
-    form button {
-      margin-top: 20px;
-}
+    form button { margin-top: 20px;}
 .forgot {
-      margin-top: 12px;
-      font-size: 0.95em;
+      margin-top: 12px; font-size: 0.95em;
 }
 .forgot a {
-      color: #2563eb;
-      text-decoration: none;
+      color: #2563eb; text-decoration: none;
 }
-.forgot a:hover {
-      text-decoration: underline;
+.forgot a:hover {text-decoration: underline;
 }
   </style>
 </head>
 <body>
-  <!-- Navigation -->
   <div id="nav">
     <div id="logo">🐍 NICO SERVICES</div>
     <ul id="menu">
@@ -43,7 +31,6 @@
     </ul>
   </div>
 
-  <!-- Formulaire -->
   <div class="main-content">
     <h1>🔐 Connexion à ton compte</h1>
     <form id="formConnexion">
@@ -57,7 +44,7 @@
     </form>
 
     <div class="forgot">
-      🔑 <a href="contact.html">Mot de passe oublié ? Contacte le support</a>
+      🔑 <a href="contact.html">Mot de passe oublié? Contacte le support</a>
     </div>
 
     <p id="msgErreur" style="color: red; margin-top: 15px;"></p>
@@ -68,20 +55,25 @@
   </footer>
 
   <script>
-    document.getElementById("formConnexion").addEventListener("submit", function (e) {
+    document.getElementById("formConnexion").addEventListener("submit", async function (e) {
       e.preventDefault();
 
-      const email = document.getElementById("emailLogin").value.trim();
-      const mdp = document.getElementById("mdpLogin").value;
-      const storedEmail = localStorage.getItem("emailUtilisateur");
-      const storedMdp = localStorage.getItem("motdepasseUtilisateur");
-      const prenom = localStorage.getItem("prenomUtilisateur") || "visiteur";
+      const email = document.getElementById("emailLogin").value;
+      const mot_de_passe = document.getElementById("mdpLogin").value;
 
-      if (email === storedEmail && mdp === storedMdp) {
-        alert(👋 Bienvenue ${prenom}!);
+      const res = await fetch("https://9a7b95cf-ab29-4cdb-8015-f36d0b593d2b-00-2iuizvvj1u0tv.worf.replit.dev/connexion", {
+        method: "POST",
+        headers: { "Content-Type": "application/json"},
+        body: JSON.stringify({ email, mot_de_passe})
+});
+
+      const result = await res.json();
+
+      if (res.ok) {
+        alert(👋 Bienvenue!);
         window.location.href = "cours.html";
 } else {
-        document.getElementById("msgErreur").textContent = "❌ Identifiants incorrects. Réessaie ou contacte le support.";
+        document.getElementById("msgErreur").textContent = result.message || "❌ Erreur de connexion.";
 }
 });
   </script>
