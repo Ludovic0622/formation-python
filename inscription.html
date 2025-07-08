@@ -6,32 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    form label {
-      font-weight: bold;
-      margin-top: 15px;
+    form label { font-weight: bold; margin-top: 15px;}
+    form input, form select {
+      width: 100%; padding: 10px; margin-top: 5px;
+      border: 1px solid #ccc; border-radius: 5px;
 }
-
-    form input,
-    form select {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-}
-
-    form input[type="checkbox"] {
-      width: auto;
-      margin-right: 8px;
-}
-
-    form button {
-      margin-top: 20px;
-}
+    form button { margin-top: 20px;}
   </style>
 </head>
 <body>
-  <!-- Navigation -->
   <div id="nav">
     <div id="logo">🐍 NICO SERVICES</div>
     <ul id="menu">
@@ -40,7 +23,6 @@
     </ul>
   </div>
 
-  <!-- Formulaire -->
   <div class="main-content">
     <h1>📝 Crée ton compte apprenant</h1>
     <form id="formInscription">
@@ -67,7 +49,7 @@
         <option value="Avancé">Avancé</option>
       </select>
 
-      <label for="objectif">Pourquoi apprends-tu Python ?</label>
+      <label for="objectif">Pourquoi apprends-tu Python?</label>
       <input type="text" id="objectif" placeholder="Ex: Reconvertir, trouver un travail, curiosité..." required />
 
       <label>
@@ -85,30 +67,31 @@
   </footer>
 
   <script>
-    document.getElementById("formInscription").addEventListener("submit", function (e) {
+    document.getElementById("formInscription").addEventListener("submit", async function (e) {
       e.preventDefault();
 
-      const prenom = document.getElementById("prenom").value.trim();
-      const nom = document.getElementById("nom").value.trim();
-      const naissance = document.getElementById("naissance").value;
-      const email = document.getElementById("email").value.trim();
-      const motdepasse = document.getElementById("motdepasse").value;
-      const niveau = document.getElementById("niveau").value;
-      const objectif = document.getElementById("objectif").value.trim();
+      const data = {
+        prenom: document.getElementById("prenom").value,
+        nom: document.getElementById("nom").value,
+        naissance: document.getElementById("naissance").value,
+        email: document.getElementById("email").value,
+        mot_de_passe: document.getElementById("motdepasse").value,
+        niveau: document.getElementById("niveau").value,
+        objectif: document.getElementById("objectif").value
+};
 
-      localStorage.setItem("prenomUtilisateur", prenom);
-      localStorage.setItem("nomUtilisateur", nom);
-      localStorage.setItem("naissanceUtilisateur", naissance);
-      localStorage.setItem("emailUtilisateur", email);
-      localStorage.setItem("motdepasseUtilisateur", motdepasse);
-      localStorage.setItem("niveauUtilisateur", niveau);
-      localStorage.setItem("objectifUtilisateur", objectif);
-      localStorage.setItem("coursDebloque", 1);
+      const res = await fetch("https://9a7b95cf-ab29-4cdb-8015-f36d0b593d2b-00-2iuizvvj1u0tv.worf.replit.dev/inscription", {
+        method: "POST",
+        headers: { "Content-Type": "application/json"},
+        body: JSON.stringify(data)
+});
 
-      document.getElementById("message").textContent = `Bienvenue ${prenom}, ton compte est enregistré 🎉`;
-      setTimeout(() => {
-        window.location.href = "cours.html";
-}, 2000);
+      const result = await res.json();
+      document.getElementById("message").textContent = result.message;
+
+      if (res.ok) {
+        setTimeout(() => window.location.href = "cours.html", 2000);
+}
 });
   </script>
 </body>
